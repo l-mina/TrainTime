@@ -7,6 +7,8 @@ import dotenv from "dotenv";
 import { initDB } from "./config/initDB.js";
 import { aj } from "./lib/arcjet.js";
 
+import { mtaRoutes } from "./routes/mtaRoutes.js";
+
 dotenv.config();
 
 const app = express();
@@ -63,6 +65,7 @@ app.use(async(req, res, next)=>{
 });
 
 // app.use("/api/", Routes);
+app.use('/mta', mtaRoutes);
 
 initDB().then(() => {
     app.listen(PORT, () => {
